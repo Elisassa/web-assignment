@@ -2268,12 +2268,12 @@ html {
   justify-content: flex-end;
 }
 
-.gap-4 {
-  gap: 1rem;
-}
-
 .gap-6 {
   gap: 1.5rem;
+}
+
+.gap-4 {
+  gap: 1rem;
 }
 
 .rounded-box {

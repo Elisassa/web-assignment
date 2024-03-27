@@ -4,49 +4,46 @@ const HTTP_PORT = process.env.PORT || 8080;
 const legoData = require("./modules/legoSets");
 const path = require('path');
 
-app.use(express.static('public'));
-app.use(express.static('views'));
 
+
+//app.use(express.static('public'));
+//app.use(express.static('views'));
+app.use(express.static('public'));
+app.set('view engine', 'ejs');//a4
 
 legoData.initialize()
     .then(() => {
         app.get("/", (req, res) => {
-            res.sendFile(path.join(__dirname, "/views/home.html"));
+            res.render("home");
         });
         app.get("/About", (req, res) => {
-            res.sendFile(path.join(__dirname, "/views/About.html"));
+            res.render("About");
         });
 
-        app.get("/lego/sets", async (req, res) => { // add async
+        app.get("/lego/sets", async (req, res) => {
             try {
-                if (req.query.theme) {
-                    let sets = await legoData.getSetsByTheme(req.query.theme);
-                    res.send(sets);
-                } else {
-                    let sets = await legoData.getAllSets();
-                    res.send(sets);
-                }
+                const sets = req.query.theme ? await legoData.getSetsByTheme(req.query.theme) : await legoData.getAllSets();
+                res.render("sets", { sets });
             } catch (err) {
-                res.status(404).send(err);
+                res.status(404).render('404', { message: `Error retrieving LEGO sets: ${err}` });
             }
         });
 
         
-        app.get("/lego/sets/:setNum", async (req, res) => { 
-            try {
-                let set = await legoData.getSetByNum(req.params.setNum); 
-                if (set) {
-                    res.send(set);
-                } else {
-                    throw 'Set not found'; 
-                }
-            } catch (err) {
-                res.status(404).send(`LEGO set not found: ${err}`);
-            }
+        app.get("/lego/sets/:set_num", (req, res) => {
+            const set_num = req.params.set_num;
+            legoData.getSetByNum(set_num)
+                .then(set => {
+                    res.render("set", { set, page: '/lego/sets' });
+                })
+                .catch((error) => {
+                    res.status(404).render('404', { message: `Error: ${error}` });
+                });
         });
+        
        
         app.use((req, res, next) => {
-            res.status(404).sendFile(path.join(__dirname, "/views/404.html"));
+            res.status(404).render('404', { message: "I'm sorry, we're unable to find what you're looking for" });
           });
 
         app.listen(HTTP_PORT, () => console.log(`Server listening on: ${HTTP_PORT}`));

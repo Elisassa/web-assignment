@@ -1,5 +1,5 @@
 /********************************************************************************
-* WEB322 – Assignment 02
+* WEB322 – Assignment 04
 *
 * I declare that this assignment is my own work in accordance with Seneca's
 * Academic Integrity Policy:
@@ -8,7 +8,7 @@
 *
 * Name: Rong Chen  Student ID: 132356221 Date:02/16/2024
 *
-* Published URL:https://github.com/ElisaRong122/web322-a2.git
+* Published URL:https://tiny-erin-dragonfly-veil.cyclic.app/
 ********************************************************************************/
 //legoSets.js
 // Import data
@@ -19,69 +19,50 @@ const themeData = require("../data/themeData.json");
 let sets = [];
 
 function initialize() {
-    return new Promise((resolve, reject) => {
-      try {
-        setData.forEach((set) => {
-          let themeObj = themeData.find(
-            (theme) => theme.id === set.theme_id
-          );
-  
-          if (themeObj) {
-            let newSet = {
-              set_num: set.set_num,
-              name: set.name,
-              year: set.year,
-              theme_id: set.theme_id,
-              num_parts: set.num_parts,
-              img_url: set.img_url,
-              theme: themeObj.name,
-            };
-            sets.push(newSet);
-          } else {
-            console.error("Not found");
-          }
-        });
-        resolve(sets);
-      } catch (error) {
-        reject(error);
-      }
+  return new Promise((resolve, reject) => {
+    setData.forEach(setElement => {
+      let setWithTheme = { ...setElement, theme: themeData.find(themeElement => themeElement.id == setElement.theme_id).name }
+      sets.push(setWithTheme);
+      resolve();
     });
-  }
+  });
 
+}
 
-// Get all sets
 function getAllSets() {
-    return new Promise((resolve, reject) => {
-        try{
-            resolve(sets);
-        }catch (error) {
-            reject(error);
-        }
-    });
+  return new Promise((resolve, reject) => {
+    resolve(sets);
+  });
 }
 
-// Get a specific set by set number
 function getSetByNum(setNum) {
-    return new Promise((resolve, reject) => {
-        try{
-        let set = sets.find(set => set.set_num === setNum);
-            resolve(set);
-        } catch (error) {
-            reject(error);
-        }
-    });
+
+  return new Promise((resolve, reject) => {
+    let foundSet = sets.find(s => s.set_num == setNum);
+
+    if (foundSet) {
+      resolve(foundSet)
+    } else {
+      reject("Unable to find requested set");
+    }
+
+  });
+
 }
 
-// Get sets by theme
 function getSetsByTheme(theme) {
-    return new Promise((resolve, reject) => {
-        try{
-        let filteredSets = sets.filter(set => set.theme.toUpperCase().includes(theme.toUpperCase()));
-            resolve(filteredSets);
-        } catch (error) {
-            reject(error);
-        }
-    });
+
+  return new Promise((resolve, reject) => {
+    let foundSets = sets.filter(s => s.theme.toUpperCase().includes(theme.toUpperCase()));
+
+    if (foundSets.length > 0 ) {
+      resolve(foundSets)
+    } else {
+      reject("Unable to find requested sets");
+    }
+
+  });
+
 }
 
-module.exports = { initialize, getAllSets, getSetByNum, getSetsByTheme };
+module.exports = { initialize, getAllSets, getSetByNum, getSetsByTheme }

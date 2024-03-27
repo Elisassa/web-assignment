@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lego Collection</title>
+  <link rel="stylesheet" href="/main.css" />
+
+</head>
+
+<body tabindex="-1">
+  <%- include('partials/navbar', { page: '/About' }) %>
+
+  <div class="container mx-auto">
+
+    <div class="hero bg-base-200 rounded-lg p-6">
+      <div class="hero-content text-center ">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold">About</h1>
+
+          <p class="py-6">Everything you want to know about me - the designer &amp; developer.</p>
+
+        </div>
+      </div>
+    </div>
+
+    <br />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <img class="w-full rounded-lg"
+          src="https://images.pexels.com/photos/1870376/pexels-photo-1870376.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          alt="profile" />
+
+      </div>
+      <div class="prose">
+
+        <p>My name is Rong Chen and I'm currently studying at Seneca Polytechnic.</p>
+
+        <p>I am currently in my third semester, embarking on an exciting journey of learning and personal growth. 
+           My passion for academia is matched only by my deep affection for cats. 
+           These graceful and mysterious creatures bring so much joy and comfort into my life with their playful antics and soothing purrs. In addition to my love for cats, I have a fervent interest in badminton. 
+           Playing badminton not only offers me a great way to stay physically active and healthy, but it also provides a thrilling challenge as I strive to improve my skills and techniques. 
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+
+</html>
