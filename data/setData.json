@@ -1,4 +1,3 @@
-
 [
     {
         "set_num": "001-1",
@@ -145,7 +144,7 @@
         "img_url": "https://cdn.rebrickable.com/media/sets/010423-1.jpg"
     },
     {
-        "set_num": "1月1日",
+        "set_num": "01-1",
         "name": "Chain Links",
         "year": "1980",
         "theme_id": "453",
@@ -161,7 +160,7 @@
         "img_url": "https://cdn.rebrickable.com/media/sets/011-1.jpg"
     },
     {
-        "set_num": "1月2日",
+        "set_num": "01-2",
         "name": "Bulldozer Chain Links",
         "year": "1982",
         "theme_id": "453",
@@ -169,7 +168,7 @@
         "img_url": "https://cdn.rebrickable.com/media/sets/01-2.jpg"
     },
     {
-        "set_num": "2月1日",
+        "set_num": "02-1",
         "name": "Extra Large Tires & Hubs",
         "year": "1982",
         "theme_id": "453",
@@ -185,7 +184,7 @@
         "img_url": "https://cdn.rebrickable.com/media/sets/021-1.jpg"
     },
     {
-        "set_num": "2月2日",
+        "set_num": "02-2",
         "name": "Digger Bucket Assembly",
         "year": "1980",
         "theme_id": "453",
@@ -231,5 +230,13 @@
         "theme_id": "505",
         "num_parts": "29",
         "img_url": "https://cdn.rebrickable.com/media/sets/030-2.jpg"
+    },
+    {
+        "set_num": "03093-1",
+        "name": "The Race to Build It Board Game",
+        "year": "1999",
+        "theme_id": "674",
+        "num_parts": "77",
+        "img_url": "https://cdn.rebrickable.com/media/sets/03093-1.jpg"
     }
 ]

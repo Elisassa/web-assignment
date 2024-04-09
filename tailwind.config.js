@@ -1,13 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./views/home.ejs",
-    "./views/About.ejs",
-    "./views/404.ejs"
-  ],
+  content: [`./views/**/*.ejs`], // all .ejs files
   theme: {
     extend: {},
   },
-  plugins: [require('daisyui'), require('@tailwindcss/typography')],
+  plugins: [require('@tailwindcss/typography'), require('daisyui')],
+  daisyui: {
+    themes: ['coffee'],
+  },
 }
 
